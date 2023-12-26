@@ -2,8 +2,9 @@ USERNAME=$(cat ../secrets/kc_username.txt)
 U_PASSWORD=$(cat ../secrets/kc_user_password.txt)
 CLIENT_ID=$(cat ../secrets/kc_client.txt)
 KC_URL=$(cat ../secrets/kc_url.txt)
+KC_REALM=$(cat ../secrets/kc_realm.txt)
 
-RESPONSE=$(curl -X POST "http://${KC_URL}/realms/testops/protocol/openid-connect/token" \
+RESPONSE=$(curl -X POST "http://${KC_URL}/realms/${KC_REALM}/protocol/openid-connect/token" \
     --data-urlencode "client_id=${CLIENT_ID}" \
     --data-urlencode 'grant_type=password' \
     --data-urlencode 'scope=openid' \
